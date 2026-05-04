@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(255,138,28,0.12), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(255,138,28,0.06), transparent 60%),
+    #08090B;
+  background-attachment: fixed;
+}
+
+::selection { background: rgba(255,138,28,0.35); color: #fff; }
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10;
+  }
+  .glass-strong {
+    @apply bg-white/[0.06] backdrop-blur-2xl border border-white/10;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-carbon-950 bg-ember-gradient shadow-glow transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-white border border-white/15 bg-white/[0.03] backdrop-blur-md transition-all duration-300 hover:bg-white/[0.07] hover:border-white/25;
+  }
+  .section-title {
+    @apply font-display text-3xl md:text-5xl font-extrabold tracking-tight text-white;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold text-ember-500;
+  }
+  .container-x { @apply max-w-7xl mx-auto px-5 md:px-8; }
+}
