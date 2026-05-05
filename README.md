@@ -1,45 +1,29 @@
-# Recuperadora Menegatti & 2R
+# Recuperadora Menegatti
 
-Site premium para a Recuperadora Menegatti & 2R — engenharia automotiva de precisão, usinagem e recuperação de peças.
+Site institucional premium - engenharia de precisão, usinagem, retífica e recuperação de peças.
 
 ## Stack
 
 - React 18 + Vite
-- Tailwind CSS
+- Tailwind CSS (paleta Carbon + Crimson)
 - Framer Motion
 - lucide-react
 
-## Como rodar
+## Setup
 
 ```bash
 npm install
 npm run dev
 ```
 
-Acesse `http://localhost:5173`.
+## Logo
 
-## Build de produção
+Coloque `logo.png` (a logo oficial) em `public/logo.png`. Caso o PNG não esteja presente, o site faz fallback para `public/logo.svg`.
+
+## Build & Deploy
 
 ```bash
 npm run build
-npm run preview
 ```
 
-## Estrutura
-
-```
-src/
-  App.jsx
-  main.jsx
-  index.css
-  components/
-    Header.jsx
-    Hero.jsx
-    AuthorityBar.jsx
-    Services.jsx
-    PartsTech.jsx
-    WhyChoose.jsx
-    Contact.jsx
-    Footer.jsx
-    WhatsAppFloat.jsx
-```
+`vercel.json` já configurado com framework Vite e rewrites SPA.
