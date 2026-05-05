@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background:
+    radial-gradient(1100px 600px at 85% -10%, rgba(139,0,0,0.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(139,0,0,0.08), transparent 60%),
+    #08090B;
+  background-attachment: fixed;
+}
+::selection { background: rgba(185,28,28,0.45); color: #fff; }
+
+@layer components {
+  .glass { @apply bg-white/[0.025] backdrop-blur-xl border border-white/[0.07]; }
+  .glass-strong { @apply bg-white/[0.045] backdrop-blur-2xl border border-white/[0.08]; }
+  .rim { position: relative; }
+  .rim::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.02) 40%, rgba(185,28,28,0.25));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events: none;
+  }
+  .btn-primary { @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-white bg-crimson-gradient shadow-glow transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110; }
+  .btn-secondary { @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-white border border-white/15 bg-white/[0.03] backdrop-blur-md transition-all duration-300 hover:bg-white/[0.07] hover:border-white/25; }
+  .section-title { @apply font-display text-3xl md:text-5xl font-extrabold tracking-ultratight text-white; }
+  .eyebrow { @apply inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] font-semibold text-crimson-400; }
+  .container-x { @apply max-w-7xl mx-auto px-5 md:px-8; }
+  .divider-line { @apply h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent; }
+}
