@@ -1,70 +1,86 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
+
+const ease = [0.22, 1, 0.36, 1];
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative min-h-[100svh] flex items-center pt-28 pb-20 overflow-hidden">
-      {/* Background image placeholder */}
+    <section id="inicio" className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-40"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1632933060412-29d5d7c2f0d3?auto=format&fit=crop&w=2000&q=80')",
-          }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=2400&q=85')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-carbon-950/70 via-carbon-950/85 to-carbon-950" />
-        <div className="absolute inset-0 bg-grid-faint [background-size:32px_32px] opacity-50" />
-        <div className="absolute -top-40 -right-40 h-[520px] w-[520px] rounded-full bg-ember-600/20 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(8,9,11,0.55)_0%,rgba(8,9,11,0.85)_60%,#08090B_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-carbon-950/40 via-transparent to-carbon-950" />
+        <div className="absolute inset-0 bg-grid-faint [background-size:36px_36px] opacity-40" />
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[700px] w-[700px] rounded-full bg-crimson-700/15 blur-3xl" />
       </div>
 
-      <div className="container-x relative">
+      <div className="container-x relative pt-28 pb-20 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-4xl"
+          initial="hidden"
+          animate="show"
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.18, delayChildren: 0.25 } } }}
+          className="flex flex-col items-center"
         >
-          <span className="eyebrow mb-6">
-            <Sparkles className="h-3.5 w-3.5" /> Engenharia automotiva de alta performance
-          </span>
-          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight">
-            Engenharia de <span className="bg-ember-gradient bg-clip-text text-transparent">Precisão</span> e Recuperação Automotiva de Alta Performance.
-          </h1>
-          <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">
-            Especialistas em usinagem e recuperação de peças críticas no Rio de Janeiro. Tecnologia, acabamento e tolerâncias que <span className="text-white font-medium">superam o original de fábrica</span>.
-          </p>
+          <motion.span
+            variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } } }}
+            className="eyebrow"
+          >
+            <span className="h-px w-8 bg-crimson-500" />
+            Engenharia de Precisão · Rio de Janeiro
+            <span className="h-px w-8 bg-crimson-500" />
+          </motion.span>
 
-          <div className="mt-10 flex flex-wrap gap-3">
-            <a
-              href="https://wa.me/552137954001?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento."
-              target="_blank"
-              rel="noreferrer"
-              className="btn-primary"
-            >
+          <motion.h1
+            variants={{ hidden: { opacity: 0, y: 26 }, show: { opacity: 1, y: 0, transition: { duration: 1, ease } } }}
+            className="mt-8 font-display font-extrabold tracking-ultratight leading-[0.95] text-white"
+          >
+            <span className="block text-sm md:text-base font-medium tracking-[0.42em] text-white/55 uppercase mb-5">
+              Recuperadora
+            </span>
+            <span className="block text-[clamp(3rem,11vw,9.5rem)]">
+              <span className="bg-gradient-to-b from-white via-white to-white/70 bg-clip-text text-transparent">MENEGATTI</span>
+            </span>
+          </motion.h1>
+
+          <motion.div
+            variants={{ hidden: { opacity: 0, scaleX: 0 }, show: { opacity: 1, scaleX: 1, transition: { duration: 0.9, ease } } }}
+            className="mt-8 h-px w-40 origin-center bg-gradient-to-r from-transparent via-crimson-500 to-transparent"
+          />
+
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } } }}
+            className="mt-8 max-w-xl text-white/65 text-base md:text-lg leading-relaxed"
+          >
+            Usinagem, retífica e recuperação de peças críticas — com tecnologia de tornos CNC e padrão técnico OEM.
+          </motion.p>
+
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } } }}
+            className="mt-10 flex flex-wrap justify-center gap-3"
+          >
+            <a href="https://wa.me/552137954001?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noreferrer" className="btn-primary">
               Solicitar Orçamento <ArrowRight className="h-4 w-4" />
             </a>
             <a href="#servicos" className="btn-secondary">
-              Conhecer Nossos Serviços
+              Ver Serviços
             </a>
-          </div>
-
-          <div className="mt-14 flex items-center gap-6 text-sm text-white/60">
-            <div className="flex -space-x-2">
-              {[0,1,2].map((i) => (
-                <div key={i} className="h-9 w-9 rounded-full border-2 border-carbon-950 bg-gradient-to-br from-carbon-700 to-carbon-800" />
-              ))}
-            </div>
-            <p>
-              <span className="text-white font-semibold">+1.500</span> peças recuperadas com garantia técnica.
-            </p>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
-      <a href="#servicos" className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 hover:text-white transition">
-        <ChevronDown className="h-6 w-6 animate-bounce" />
-      </a>
+      <motion.a
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.6, duration: 1 }}
+        href="#servicos"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/45 hover:text-white transition flex flex-col items-center gap-1.5"
+      >
+        <span className="text-[10px] tracking-[0.4em] uppercase">Scroll</span>
+        <ChevronDown className="h-4 w-4 animate-bounce" />
+      </motion.a>
     </section>
   );
 }

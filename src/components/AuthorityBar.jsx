@@ -2,30 +2,35 @@ import { motion } from 'framer-motion';
 import { Award, Cpu, ShieldCheck, Headset } from 'lucide-react';
 
 const items = [
-  { icon: Award, label: 'Anos de Experiência' },
-  { icon: Cpu, label: 'Tecnologia de Ponta' },
-  { icon: ShieldCheck, label: 'Garantia de Qualidade' },
-  { icon: Headset, label: 'Atendimento Exclusivo' },
+  { icon: Award, label: 'Tradição Industrial' },
+  { icon: Cpu, label: 'Tornos CNC' },
+  { icon: ShieldCheck, label: 'Garantia Técnica' },
+  { icon: Headset, label: 'Atendimento Direto' },
 ];
+const ease = [0.22, 1, 0.36, 1];
 
 export default function AuthorityBar() {
   return (
-    <section className="relative -mt-6 z-10">
+    <section className="relative -mt-10 z-10">
       <div className="container-x">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="glass-strong rounded-2xl px-4 md:px-8 py-6 grid grid-cols-2 md:grid-cols-4 gap-4 shadow-soft"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+          className="rim glass-strong rounded-2xl px-4 md:px-8 py-6 grid grid-cols-2 md:grid-cols-4 gap-4 shadow-luxe"
         >
           {items.map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center gap-3">
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ember-500/10 border border-ember-500/30 text-ember-500">
+            <motion.div
+              key={label}
+              variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } } }}
+              className="flex items-center gap-3"
+            >
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-crimson-700/15 border border-crimson-500/30 text-crimson-400">
                 <Icon className="h-5 w-5" />
               </span>
-              <span className="font-semibold text-white/90 text-sm md:text-base">{label}</span>
-            </div>
+              <span className="font-semibold text-white/90 text-sm md:text-base tracking-tight">{label}</span>
+            </motion.div>
           ))}
         </motion.div>
       </div>
